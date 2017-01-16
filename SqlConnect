@@ -1,0 +1,9 @@
+library(RODBC)
+sql2 <- "SELECT * FROM SchemaName.TableName"
+#For connection, use trusted connection if using windows credentials to connect.
+con <- odbcDriverConnect('driver={SQL SERVER};server=ServerName;database=DataBaseName;trusted_connection=true')
+df <- as.data.frame(sqlQuery(con,sql2),stringsASFactors=FALSE)
+str(df)
+summary(df)
+length(df)
+names(df)
